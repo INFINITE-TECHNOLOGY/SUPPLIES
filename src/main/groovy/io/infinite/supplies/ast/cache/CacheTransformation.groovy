@@ -1,6 +1,7 @@
 package io.infinite.supplies.ast.cache
 
 import io.infinite.supplies.ast.exceptions.CompileException
+import io.infinite.supplies.ast.other.ASTUtils
 import jdk.internal.org.objectweb.asm.Opcodes
 import org.codehaus.groovy.ast.*
 import org.codehaus.groovy.ast.expr.ConstantExpression
@@ -28,7 +29,7 @@ class CacheTransformation extends AbstractASTTransformation {
             init(iAstNodeArray, iSourceUnit)
             annotationNode = iAstNodeArray[0] as AnnotationNode
             if (iAstNodeArray[1] instanceof FieldNode) {
-                visitFieldNode(iAstNodeArray[1] as FieldNode)
+                transformFieldNode(iAstNodeArray[1] as FieldNode)
             } else {
                 throw new CompileException(iAstNodeArray[1], "Unsupported Annotated Node; Only FieldNode is supported.")
             }
@@ -37,7 +38,7 @@ class CacheTransformation extends AbstractASTTransformation {
         }
     }
 
-    void visitFieldNode(FieldNode fieldNode) {
+    void transformFieldNode(FieldNode fieldNode) {
         if (fieldNode.isStatic()) {
             throw new CompileException(fieldNode, "Field is already static itself.")
         }
@@ -49,6 +50,7 @@ class CacheTransformation extends AbstractASTTransformation {
         sourceUnit.AST.classes.each {
             new VariableScopeVisitor(sourceUnit, true).visitClass(it)
         }
+        println (new ASTUtils().codeString(fieldNode.getInitialValueExpression()))
     }
 
     void setInitialValueExpression(FieldNode fieldNode) {

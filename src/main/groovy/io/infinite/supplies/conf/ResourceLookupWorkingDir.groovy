@@ -33,7 +33,7 @@ class ResourceLookupWorkingDir {
     }
 
     void report(String msg) {
-        println(getModuleName().padRight(16) + ": " + msg)
+        println(getModuleName().padRight(16) + ": " + Thread.currentThread().getName() + ": " + msg)
     }
 
 }

@@ -8,7 +8,7 @@ class EagerMap extends ConcurrentHashMap {
 
     Object useCache(String key, Closure closure, Object owner) {
         new ASTUtils().ensureClosureEquivalency(closure, owner)
-        if (!contains(key)) {
+        if (!containsKey(key)) {
             Object result = closure.call()
             if (result != null) {
                 put(key, result)
