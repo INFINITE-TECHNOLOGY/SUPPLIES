@@ -3,30 +3,30 @@ package io.infinite.supplies
 import io.infinite.supplies.ast.cache.EagerMap
 import org.junit.Test
 
-class CacheTest extends TestBase {
+class StaticTestBasic extends TestBase {
 
     EagerMap eagerMap = new EagerMap()
 
-    String nullString = eagerMap.useCache('nullString', {
+    String nullString = eagerMap.passThrough('nullString', {
         null
     }, this)
-    String string = eagerMap.useCache('string', {
+    String string = eagerMap.passThrough('string', {
         'test string2'
     }, this)
-    String uuid = eagerMap.useCache('uuid', {
+    String uuid = eagerMap.passThrough('uuid', {
         UUID.randomUUID().toString()
     }, this)
 
     @Test
     void test() {
-        def staticInitTestSource = getTestObjectFromResource("tests", "StaticInitTestSource.groovy")
+        def staticInitTestSource = getTestObjectFromResource("tests", "StaticTestCompiling.groovy")
         assert staticInitTestSource.nullString == null
         assert staticInitTestSource.string == "test string"
-        def staticInitTestSource2 = getTestObjectFromResource("tests", "StaticInitTestSource.groovy")
+        def staticInitTestSource2 = getTestObjectFromResource("tests", "StaticTestCompiling.groovy")
         assert staticInitTestSource.uuid == staticInitTestSource2.uuid
         assert staticInitTestSource.toString() == staticInitTestSource2.toString()
         Thread thread1 = new Thread({
-            def staticInitTestSourceThread = getTestObjectFromResource("tests", "StaticInitTestSource.groovy")
+            def staticInitTestSourceThread = getTestObjectFromResource("tests", "StaticTestCompiling.groovy")
             assert staticInitTestSourceThread.uuid == staticInitTestSource2.uuid
         })
         thread1.start()

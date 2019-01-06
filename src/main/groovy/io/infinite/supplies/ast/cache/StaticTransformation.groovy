@@ -1,6 +1,7 @@
 package io.infinite.supplies.ast.cache
 
 import io.infinite.supplies.ast.exceptions.CompileException
+import io.infinite.supplies.ast.metadata.MetaDataExpression
 import io.infinite.supplies.ast.other.ASTUtils
 import jdk.internal.org.objectweb.asm.Opcodes
 import org.codehaus.groovy.ast.*
@@ -16,19 +17,23 @@ import org.codehaus.groovy.transform.GroovyASTTransformation
 @GroovyASTTransformation(
         phase = CompilePhase.SEMANTIC_ANALYSIS
 )
-class CacheTransformation extends AbstractASTTransformation {
+class StaticTransformation extends AbstractASTTransformation {
 
     AnnotationNode annotationNode
+    Boolean polymorphism
+    static Integer declaredMapCounter = 0
 
     static {
         ClassNode.getMetaClass().staticMapDeclared = null
+        ClassNode.getMetaClass().staticMapName = null
     }
 
     void visit(ASTNode[] iAstNodeArray, SourceUnit iSourceUnit) {
         try {
             init(iAstNodeArray, iSourceUnit)
-            annotationNode = iAstNodeArray[0] as AnnotationNode
+            setAnnotationNode(iAstNodeArray[0] as AnnotationNode)
             if (iAstNodeArray[1] instanceof FieldNode) {
+                setPolymorphism(new ASTUtils().getAnnotationParameter(getAnnotationNode(), "polymorphism", false) as Boolean)
                 transformFieldNode(iAstNodeArray[1] as FieldNode)
             } else {
                 throw new CompileException(iAstNodeArray[1], "Unsupported Annotated Node; Only FieldNode is supported.")
@@ -56,8 +61,8 @@ class CacheTransformation extends AbstractASTTransformation {
     void setInitialValueExpression(FieldNode fieldNode) {
         fieldNode.setInitialValueExpression(
                 GeneralUtils.callX(
-                        GeneralUtils.varX(getMapVarName()),
-                        "useCache",
+                        GeneralUtils.varX(getDeclaredMapVarName(fieldNode)),
+                        "passThrough",
                         GeneralUtils.args(
                                 GeneralUtils.constX(fieldNode.getName()),
                                 GeneralUtils.closureX(
@@ -73,12 +78,14 @@ class CacheTransformation extends AbstractASTTransformation {
 
     void declareStaticMapIfNeeded(FieldNode fieldNode) {
         if (!fieldNode.getDeclaringClass().staticMapDeclared) {
-            fieldNode.getDeclaringClass().addField(getMapVarName(),
+            String mapVarName = prepareMapVarName()
+            fieldNode.getDeclaringClass().addField(mapVarName,
                     Opcodes.ACC_FINAL | Opcodes.ACC_TRANSIENT | Opcodes.ACC_STATIC | Opcodes.ACC_PRIVATE,
                     ClassHelper.make(getMapImplementation()),
                     GeneralUtils.ctorX(ClassHelper.make(getMapImplementation()))
             )
             fieldNode.getDeclaringClass().staticMapDeclared = true
+            fieldNode.getDeclaringClass().staticMapName = mapVarName
         }
     }
 
@@ -86,8 +93,17 @@ class CacheTransformation extends AbstractASTTransformation {
         return EagerMap.class
     }
 
-    String getMapVarName() {
-        return "eagerMap"
+    String prepareMapVarName() {
+        if (polymorphism) {
+            ++declaredMapCounter
+            return "eagerMap" + declaredMapCounter
+        } else {
+            return "eagerMap"
+        }
+    }
+
+    String getDeclaredMapVarName(FieldNode fieldNode) {
+        return fieldNode.getDeclaringClass().staticMapName
     }
 
 }

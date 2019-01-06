@@ -30,12 +30,12 @@ class MetaDataStatement extends MetaDataASTNode {
 
     MetaDataStatement(Statement statement) {
         MetaDataStatement(
-                ((Statement) statement).getClass().getSimpleName(),
+                statement.getClass().getSimpleName(),
                 new ASTUtils().codeString(statement),
-                ((Statement) statement).getColumnNumber(),
-                ((Statement) statement).getLastColumnNumber(),
-                ((Statement) statement).getLineNumber(),
-                ((Statement) statement).getLastLineNumber(),
+                statement.getColumnNumber(),
+                statement.getLastColumnNumber(),
+                statement.getLineNumber(),
+                statement.getLastLineNumber(),
                 null
         )
     }

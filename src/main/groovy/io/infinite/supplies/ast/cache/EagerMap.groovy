@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap
 
 class EagerMap extends ConcurrentHashMap {
 
-    Object useCache(String key, Closure closure, Object owner) {
+    Object passThrough(String key, Closure closure, Object owner) {
         new ASTUtils().ensureClosureEquivalency(closure, owner)
         if (!containsKey(key)) {
             Object result = closure.call()

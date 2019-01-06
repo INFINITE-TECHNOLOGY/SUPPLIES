@@ -1,18 +1,18 @@
 package tests
 
 import groovy.transform.ToString
-import io.infinite.supplies.ast.cache.Cache
+import io.infinite.supplies.ast.cache.Static
 
 @ToString(includeFields = true, includeNames = true)
-class CacheTestSource {
+class StaticTestBasic {
 
-    @Cache
+    @Static
     final String nullString
 
-    @Cache
+    @Static
     final String string = "test string"
 
-    @Cache
+    @Static
     final String uuid = UUID.randomUUID().toString()
 
 }

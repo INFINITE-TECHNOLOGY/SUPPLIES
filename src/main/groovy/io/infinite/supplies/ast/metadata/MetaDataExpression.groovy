@@ -30,12 +30,12 @@ class MetaDataExpression extends MetaDataASTNode {
 
     MetaDataExpression(Expression expression) {
         MetaDataExpression(
-                ((Expression) expression).getClass().getSimpleName(),
+                expression.getClass().getSimpleName(),
                 new ASTUtils().codeString(expression),
-                ((Expression) expression).getColumnNumber(),
-                ((Expression) expression).getLastColumnNumber(),
-                ((Expression) expression).getLineNumber(),
-                ((Expression) expression).getLastLineNumber(),
+                expression.getColumnNumber(),
+                expression.getLastColumnNumber(),
+                expression.getLineNumber(),
+                expression.getLastLineNumber(),
                 null
         )
     }

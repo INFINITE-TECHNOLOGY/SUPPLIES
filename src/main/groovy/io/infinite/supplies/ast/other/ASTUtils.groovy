@@ -1,12 +1,16 @@
 package io.infinite.supplies.ast.other
 
 import groovy.inspect.swingui.AstNodeToScriptVisitor
+import io.infinite.supplies.ast.exceptions.CompileException
 import io.infinite.supplies.ast.metadata.MetaDataExpression
 import io.infinite.supplies.ast.metadata.MetaDataMethodNode
 import io.infinite.supplies.ast.metadata.MetaDataStatement
 import org.codehaus.groovy.ast.ASTNode
+import org.codehaus.groovy.ast.AnnotationNode
 import org.codehaus.groovy.ast.MethodNode
+import org.codehaus.groovy.ast.expr.ConstantExpression
 import org.codehaus.groovy.ast.expr.Expression
+import org.codehaus.groovy.ast.expr.PropertyExpression
 import org.codehaus.groovy.ast.stmt.Statement
 
 import java.lang.reflect.Field
@@ -48,6 +52,20 @@ class ASTUtils {
                 message = astNode.toString()
         }
         return message
+    }
+
+    Object getAnnotationParameter(AnnotationNode annotationNode, String annotationName, Object defaultValue) {
+        Expression memberExpression = annotationNode.getMember(annotationName)
+        if (memberExpression instanceof PropertyExpression) {
+            ConstantExpression constantExpression = memberExpression.getProperty() as ConstantExpression
+            return constantExpression.getValue()
+        } else if (memberExpression instanceof ConstantExpression) {
+            return memberExpression.getValue()
+        } else if (memberExpression == null) {
+            return defaultValue
+        } else {
+            throw new CompileException(annotationNode, "Unsupported annotation \"$annotationName\" type: " + memberExpression.getClass().getCanonicalName() + " for annotation: " + annotationName)
+        }
     }
 
 }

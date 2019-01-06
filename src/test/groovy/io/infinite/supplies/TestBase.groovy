@@ -18,4 +18,10 @@ class TestBase {
         return file
     }
 
+    def runScriptFromResource(String sectionName, String testScriptName) {
+        File testScriptFile = getTestFile(sectionName, testScriptName)
+        GroovyScriptEngine groovyScriptEngine = new GroovyScriptEngine(testScriptFile.getParentFile().getCanonicalPath())
+        return groovyScriptEngine.run(testScriptName, new Binding())
+    }
+
 }

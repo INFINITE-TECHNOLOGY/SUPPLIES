@@ -32,13 +32,13 @@ class MetaDataMethodNode extends MetaDataASTNode {
 
     MetaDataMethodNode(MethodNode methodNode) {
         MetaDataMethodNode(
-                ((MethodNode) methodNode).getDeclaringClass().getNameWithoutPackage(),
-                ((MethodNode) methodNode).getDeclaringClass().getPackageName(),
-                ((MethodNode) methodNode).getName(),
-                ((MethodNode) methodNode).getColumnNumber(),
-                ((MethodNode) methodNode).getLastColumnNumber(),
-                ((MethodNode) methodNode).getLineNumber(),
-                ((MethodNode) methodNode).getLastLineNumber()
+                methodNode.getDeclaringClass().getNameWithoutPackage(),
+                methodNode.getDeclaringClass().getPackageName(),
+                methodNode.getName(),
+                methodNode.getColumnNumber(),
+                methodNode.getLastColumnNumber(),
+                methodNode.getLineNumber(),
+                methodNode.getLastLineNumber()
         )
     }
 
