@@ -1,7 +1,6 @@
 package io.infinite.supplies.ast.cache
 
 import io.infinite.supplies.ast.exceptions.CompileException
-import io.infinite.supplies.ast.metadata.MetaDataExpression
 import io.infinite.supplies.ast.other.ASTUtils
 import jdk.internal.org.objectweb.asm.Opcodes
 import org.codehaus.groovy.ast.*
@@ -20,8 +19,6 @@ import org.codehaus.groovy.transform.GroovyASTTransformation
 class StaticTransformation extends AbstractASTTransformation {
 
     AnnotationNode annotationNode
-    Boolean polymorphism
-    static Integer declaredMapCounter = 0
 
     static {
         ClassNode.getMetaClass().staticMapDeclared = null
@@ -33,7 +30,6 @@ class StaticTransformation extends AbstractASTTransformation {
             init(iAstNodeArray, iSourceUnit)
             setAnnotationNode(iAstNodeArray[0] as AnnotationNode)
             if (iAstNodeArray[1] instanceof FieldNode) {
-                setPolymorphism(new ASTUtils().getAnnotationParameter(getAnnotationNode(), "polymorphism", false) as Boolean)
                 transformFieldNode(iAstNodeArray[1] as FieldNode)
             } else {
                 throw new CompileException(iAstNodeArray[1], "Unsupported Annotated Node; Only FieldNode is supported.")
@@ -55,7 +51,7 @@ class StaticTransformation extends AbstractASTTransformation {
         sourceUnit.AST.classes.each {
             new VariableScopeVisitor(sourceUnit, true).visitClass(it)
         }
-        println (new ASTUtils().codeString(fieldNode.getInitialValueExpression()))
+        println(new ASTUtils().codeString(fieldNode.getInitialValueExpression()))
     }
 
     void setInitialValueExpression(FieldNode fieldNode) {
@@ -94,12 +90,7 @@ class StaticTransformation extends AbstractASTTransformation {
     }
 
     String prepareMapVarName() {
-        if (polymorphism) {
-            ++declaredMapCounter
-            return "eagerMap" + declaredMapCounter
-        } else {
-            return "eagerMap"
-        }
+        return "eagerMap"
     }
 
     String getDeclaredMapVarName(FieldNode fieldNode) {

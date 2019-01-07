@@ -3,7 +3,7 @@ package io.infinite.supplies
 import io.infinite.supplies.ast.cache.EagerMap
 import org.junit.Test
 
-class StaticTestBasic extends TestBase {
+class StaticTestCompiling extends TestBase {
 
     EagerMap eagerMap = new EagerMap()
 
