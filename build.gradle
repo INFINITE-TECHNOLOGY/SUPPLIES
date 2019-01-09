@@ -13,7 +13,7 @@ plugins {
 }
 sourceCompatibility = 1.7
 group = "io.infinite"
-version = "1.0.0.${System.getProperty('build.number')}"
+version = "1.0.0-SNAPSHOT"
 description = "Misc commons/utilities/tools"
 wrapper {
     gradleVersion = "5.0"
