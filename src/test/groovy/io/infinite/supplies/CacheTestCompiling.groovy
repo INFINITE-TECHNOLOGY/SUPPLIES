@@ -3,7 +3,7 @@ package io.infinite.supplies
 import io.infinite.supplies.ast.cache.EagerMap
 import org.junit.Test
 
-class StaticTestCompiling extends TestBase {
+class CacheTestCompiling extends TestBase {
 
     EagerMap eagerMap = new EagerMap()
 
@@ -19,14 +19,14 @@ class StaticTestCompiling extends TestBase {
 
     @Test
     void test() {
-        def staticInitTestSource = getTestObjectFromResource("tests", "StaticTestCompiling.groovy")
+        def staticInitTestSource = getTestObjectFromResource("tests", "CacheTestCompiling.groovy")
         assert staticInitTestSource.nullString == null
         assert staticInitTestSource.string == "test string"
-        def staticInitTestSource2 = getTestObjectFromResource("tests", "StaticTestCompiling.groovy")
+        def staticInitTestSource2 = getTestObjectFromResource("tests", "CacheTestCompiling.groovy")
         assert staticInitTestSource.uuid == staticInitTestSource2.uuid
         assert staticInitTestSource.toString() == staticInitTestSource2.toString()
         Thread thread1 = new Thread({
-            def staticInitTestSourceThread = getTestObjectFromResource("tests", "StaticTestCompiling.groovy")
+            def staticInitTestSourceThread = getTestObjectFromResource("tests", "CacheTestCompiling.groovy")
             assert staticInitTestSourceThread.uuid == staticInitTestSource2.uuid
         })
         thread1.start()

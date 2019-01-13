@@ -16,7 +16,7 @@ import org.codehaus.groovy.transform.GroovyASTTransformation
 @GroovyASTTransformation(
         phase = CompilePhase.SEMANTIC_ANALYSIS
 )
-class StaticTransformation extends AbstractASTTransformation {
+class CacheTransformation extends AbstractASTTransformation {
 
     AnnotationNode annotationNode
 
@@ -41,10 +41,7 @@ class StaticTransformation extends AbstractASTTransformation {
 
     void transformFieldNode(FieldNode fieldNode) {
         if (fieldNode.isStatic()) {
-            throw new CompileException(fieldNode, "Field is already static itself.")
-        }
-        if (!fieldNode.isFinal()) {
-            throw new CompileException(fieldNode, "Field must be final.")
+            throw new CompileException(fieldNode, "Field must not be static.")
         }
         declareStaticMapIfNeeded(fieldNode)
         setInitialValueExpression(fieldNode)

@@ -10,27 +10,28 @@ import java.lang.annotation.Target
 
 /**
  * Caches the initialization of annotated field.<br>
- * Cache is on class level (cache is static).<br>
- * Field should be final.<br>
+ * Cache is on class level (cache is static and shared across all instances).<br>
+ * Setting cached field reference to different object does not affect other users of this cached field. <br>
  * Field should not be static.<br>
  * This is an eager cache.<br>
  * Polymorphism is not supported - cache is global per class hierarchy.<br>
+ *
  * Example usage:<br>
  * <pre><code>
- *     &#64;Static
- *     final File file = new File("./file.txt")
+ *     &#64;Cache
+ *     File file = new File("./file.txt")
  * </code></pre>
  * Is transformed to:<br>
  * <pre><code>
  *     static EagerMap eagerMap = new EagerMap()
- *     final File file = eagerMap.passThrough('file', {
+ *     File file = eagerMap.passThrough('file', {
  *         new File("./")
  *     })
  * </code></pre>
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@GroovyASTTransformationClass("io.infinite.supplies.ast.cache.StaticTransformation")
-@interface Static {
+@GroovyASTTransformationClass("io.infinite.supplies.ast.cache.CacheTransformation")
+@interface Cache {
 
 }

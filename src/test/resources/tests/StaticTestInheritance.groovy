@@ -1,7 +1,7 @@
 package tests
 
 import groovy.transform.ToString
-import io.infinite.supplies.ast.cache.Static
+import io.infinite.supplies.ast.cache.Cache
 
 class Foo {
     String foo
@@ -20,7 +20,7 @@ class Foo {
 @ToString(includeFields = true, includeNames = true)
 class SuperClass {
 
-    @Static
+    @Cache
     final Foo inheritedField = new Foo("Super Class String")
 
 }
@@ -28,7 +28,7 @@ class SuperClass {
 @ToString(includeFields = true, includeNames = true)
 class SubClass extends SuperClass {
 
-    @Static
+    @Cache
     final Foo inheritedField = new Foo("Sub Class String")
 
 }
