@@ -4,7 +4,7 @@ import groovy.transform.ToString
 import io.infinite.supplies.ast.cache.Cache
 
 @ToString(includeFields = true, includeNames = true)
-class StaticTestBasic {
+class CacheTestBasic {
 
     @Cache
     final String nullString
