@@ -1,17 +1,19 @@
 package io.infinite.supplies.other
 
+import io.infinite.supplies.ast.cache.Cache
 
 import java.util.concurrent.ConcurrentHashMap
 
-class ThreadLocal<Type> {
+class ThreadLocal {
 
-    public static ConcurrentHashMap<Thread, Type> objectsByThread = new ConcurrentHashMap<Thread, Type>()
+    @Cache
+    ConcurrentHashMap<Thread, Object> objectsByThread = new ConcurrentHashMap<Thread, Object>()
 
-    void set(Type object) {
+    void set(Object object) {
         objectsByThread.put(Thread.currentThread(), object)
     }
 
-    Type get() {
+    Object get() {
         objectsByThread.get(Thread.currentThread())
     }
 
