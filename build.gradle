@@ -27,7 +27,6 @@ sourceSets {
 }
 dependencies {
     compile "org.codehaus.groovy:groovy-all:2.5.4"
-    runtime "com.fasterxml.jackson.core:jackson-databind:2.9.7"
     testCompile "junit:junit:4.12"
 }
 task sourceJar(type: Jar) {
