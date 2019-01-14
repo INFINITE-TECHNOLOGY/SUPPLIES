@@ -18,8 +18,8 @@ class ResourceLookupThread extends ResourceLookupSystem {
             }
         })
         if (url != null) {
-            report("Found: " + new File(url.toURI()).getCanonicalPath())
-            return new File(url.toURI())
+            report("Found: " + url.toExternalForm())
+            return new File(url.toExternalForm())
         } else {
             report("Not found.")
             if (proceedSearch) {
