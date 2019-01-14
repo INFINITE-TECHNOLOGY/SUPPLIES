@@ -10,40 +10,27 @@ class ResourceLookupThread extends ResourceLookupSystem {
         super(moduleName, resourceName, proceedSearch)
     }
 
-    File getResourceAsFile() {
+    String getResourceAsString() {
         report("Searching for ${getResourceName()} config in application resource files using Thread classloader.")
         URL url = AccessController.doPrivileged(new PrivilegedAction<URL>() {
             URL run() {
-                return getResource()
+                return getClassLoader().getResource(getResourceName())
             }
         })
         if (url != null) {
             report("Found: " + url.toExternalForm())
-            return new File(url.toExternalForm())
-        } else {
-            report("Not found.")
-            if (proceedSearch) {
-                return super.getResourceAsFile()
-            } else {
-                return null
-            }
+            return new Scanner(getClassLoader().getResourceAsStream(getResourceName())).useDelimiter("\\A").next()
         }
-    }
-
-    URL getResource() {
-        report("(ResourceLookup name: ${getResourceName()})")
-        ClassLoader classLoader = getClassLoader()
-        if (classLoader != null) {
-            return classLoader.getResource(getResourceName())
+        report("Not found.")
+        if (proceedSearch) {
+            return super.getResourceAsString()
         } else {
-            return super.getResource()
+            return null
         }
     }
 
     ClassLoader getClassLoader() {
-        report("Using thread classloader")
         return Thread.currentThread().getContextClassLoader()
     }
-
 
 }

@@ -7,7 +7,8 @@ class ResourceLookupTest {
 
     @Test
     void test() {
-        assert new ResourceLookupThread("supplies", "dummy/dummy.resource", true).getResourceAsFile() != null
+        assert new ResourceLookupThread("supplies", "dummy/dummy.resource", true).getResourceAsString() != null
+        new ResourceLookupThread("supplies", "dummy/dummy.resource", true).getResourceAsString() == "Z"
     }
 
 }

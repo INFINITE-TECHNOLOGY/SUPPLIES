@@ -10,28 +10,24 @@ class ResourceLookupSystem extends ResourceLookupWorkingDir {
         super(moduleName, resourceName, proceedSearch)
     }
 
-    File getResourceAsFile() {
+    String getResourceAsString() {
         report("Searching for Bobbin config in application resource files using System classloader.")
         URL url = AccessController.doPrivileged(new PrivilegedAction<URL>() {
             URL run() {
-                return getResource()
+                return ClassLoader.getSystemClassLoader().getResource(getResourceName())
             }
         })
         if (url != null) {
             report("Found: " + url.toExternalForm())
-            return new File(url.toExternalForm())
-        } else {
-            report("Not found.")
-            if (proceedSearch) {
-                return super.getResourceAsFile()
-            } else {
-                return null
-            }
+            return new Scanner(ClassLoader.getSystemClassLoader().getResourceAsStream(getResourceName())).useDelimiter("\\A").next()
         }
-    }
+        report("Not found.")
+        if (proceedSearch) {
+            return super.getResourceAsString()
+        } else {
+            return null
+        }
 
-    URL getResource() {
-        return ClassLoader.getSystemResource(getResourceName())
     }
 
 }
