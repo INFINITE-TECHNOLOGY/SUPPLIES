@@ -1,5 +1,7 @@
 package io.infinite.supplies.conf
 
+import io.infinite.supplies.ast.exceptions.RuntimeException
+
 class ResourceLookupWorkingDir {
 
     String moduleName
@@ -7,6 +9,9 @@ class ResourceLookupWorkingDir {
     Boolean proceedSearch = true
 
     ResourceLookupWorkingDir(String moduleName, String resourceName, Boolean proceedSearch) {
+        if (resourceName == null || resourceName == "") {
+            throw new RuntimeException("Resource name can not be null or empty: " + resourceName == "" ? "empty" : "null")
+        }
         this.moduleName = moduleName
         this.resourceName = resourceName
         this.proceedSearch = proceedSearch
