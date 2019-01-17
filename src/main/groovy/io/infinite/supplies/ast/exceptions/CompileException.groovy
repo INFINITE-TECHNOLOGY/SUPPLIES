@@ -13,7 +13,6 @@ class CompileException extends Exception {
 
     CompileException(ASTNode astNode, String message) {
         super(message + "\n" + new ASTUtils().prepareExceptionMessage(astNode))
-        this.setStackTrace([] as StackTraceElement[])
     }
 
 }

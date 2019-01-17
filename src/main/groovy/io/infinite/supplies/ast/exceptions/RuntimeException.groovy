@@ -6,7 +6,8 @@ class RuntimeException extends Exception {
         super(var1)
     }
 
-    RuntimeException(String var1, Throwable var2) {
-        super(var1, var2)
+    RuntimeException(String var1, Exception exception) {
+        super(var1, exception)
+        this.setStackTrace([] as StackTraceElement[])
     }
 }
