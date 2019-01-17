@@ -1,7 +1,6 @@
 package io.infinite.supplies.ast.exceptions
 
-import io.infinite.supplies.ast.other.ASTUtils
-import org.codehaus.groovy.ast.ASTNode
+import io.infinite.supplies.ast.metadata.MetaDataASTNode
 
 class RuntimeException extends Exception {
 
@@ -14,8 +13,8 @@ class RuntimeException extends Exception {
         this.setStackTrace([] as StackTraceElement[])
     }
 
-    RuntimeException(ASTNode astNode, Exception exception) {
-        super(new ASTUtils().prepareExceptionMessage(astNode), exception)
+    RuntimeException(MetaDataASTNode metaDataASTNode, Exception exception) {
+        super(metaDataASTNode.toString(), exception)
         this.setStackTrace([] as StackTraceElement[])
     }
 
