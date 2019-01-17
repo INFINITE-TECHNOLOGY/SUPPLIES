@@ -31,7 +31,7 @@ class MetaDataMethodNode extends MetaDataASTNode {
     }
 
     MetaDataMethodNode(MethodNode methodNode) {
-        MetaDataMethodNode(
+        this(
                 methodNode.getDeclaringClass().getNameWithoutPackage(),
                 methodNode.getDeclaringClass().getPackageName(),
                 methodNode.getName(),

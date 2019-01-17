@@ -29,7 +29,7 @@ class MetaDataStatement extends MetaDataASTNode {
     }
 
     MetaDataStatement(Statement statement) {
-        MetaDataStatement(
+        this(
                 statement.getClass().getSimpleName(),
                 new ASTUtils().codeString(statement),
                 statement.getColumnNumber(),

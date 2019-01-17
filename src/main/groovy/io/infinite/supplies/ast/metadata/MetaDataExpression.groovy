@@ -11,13 +11,13 @@ class MetaDataExpression extends MetaDataASTNode {
     String sourceNodeName
 
     MetaDataExpression(
-        String expressionClassName,
-        String origCodeString,
-        Integer columnNumber,
-        Integer lastColumnNumber,
-        Integer lineNumber,
-        Integer lastLineNumber,
-        String sourceNodeName
+            String expressionClassName,
+            String origCodeString,
+            Integer columnNumber,
+            Integer lastColumnNumber,
+            Integer lineNumber,
+            Integer lastLineNumber,
+            String sourceNodeName
     ) {
         this.expressionClassName = expressionClassName
         this.restoredScriptCode = origCodeString
@@ -29,7 +29,7 @@ class MetaDataExpression extends MetaDataASTNode {
     }
 
     MetaDataExpression(Expression expression) {
-        MetaDataExpression(
+        this(
                 expression.getClass().getSimpleName(),
                 new ASTUtils().codeString(expression),
                 expression.getColumnNumber(),
