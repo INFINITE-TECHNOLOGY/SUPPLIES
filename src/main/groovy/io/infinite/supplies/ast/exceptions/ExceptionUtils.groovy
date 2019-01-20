@@ -11,7 +11,9 @@ class ExceptionUtils {
     }
 
     String sanitizedStacktrace(Throwable throwable) {
-        new StackTraceUtils().sanitizeRootCause(throwable)
+        if (throwable.cause != null) {
+            new StackTraceUtils().sanitizeRootCause(throwable)
+        }
         return stacktrace(new StackTraceUtils().sanitize(throwable))
     }
 
