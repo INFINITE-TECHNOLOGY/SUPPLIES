@@ -15,9 +15,4 @@ class CompileException extends Exception {
         super(message + "\n" + new ASTUtils().prepareExceptionMessage(astNode))
     }
 
-    @Override
-    String toString() {
-        return super.toString() + new ExceptionUtils().stacktrace(this)
-    }
-
 }
