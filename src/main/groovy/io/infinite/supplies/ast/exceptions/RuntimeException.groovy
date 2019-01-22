@@ -18,4 +18,9 @@ class RuntimeException extends Exception {
         this.setStackTrace([] as StackTraceElement[])
     }
 
+    @Override
+    String toString() {
+        return super.toString() + new ExceptionUtils().stacktrace()
+    }
+
 }
