@@ -17,7 +17,7 @@ class CompileException extends Exception {
 
     @Override
     String toString() {
-        return super.toString() + new ExceptionUtils().stacktrace()
+        return super.toString() + new ExceptionUtils().stacktrace(this)
     }
 
 }
