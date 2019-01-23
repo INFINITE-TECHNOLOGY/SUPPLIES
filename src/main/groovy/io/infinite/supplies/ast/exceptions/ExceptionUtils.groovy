@@ -5,16 +5,28 @@ import org.codehaus.groovy.runtime.StackTraceUtils
 class ExceptionUtils {
 
     String stacktrace(Throwable throwable) {
+        Throwable throwableToProcess = getThrowableToProcess(throwable)
         StringWriter stringWriter = new StringWriter()
-        throwable.printStackTrace(new PrintWriter(stringWriter))
+        throwableToProcess.printStackTrace(new PrintWriter(stringWriter))
         return stringWriter.toString()
     }
 
     String sanitizedStacktrace(Throwable throwable) {
-        if (throwable.cause != null) {
-            new StackTraceUtils().sanitizeRootCause(throwable)
+        Throwable throwableToProcess = getThrowableToProcess(throwable)
+        if (throwableToProcess.cause != null) {
+            new StackTraceUtils().sanitizeRootCause(throwableToProcess)
         }
-        return stacktrace(new StackTraceUtils().sanitize(throwable))
+        return stacktrace(new StackTraceUtils().sanitize(throwableToProcess))
+    }
+
+    Throwable getThrowableToProcess(Throwable throwable) {
+        Throwable throwableToProcess
+        if (throwable.hasProperty("runtimeException")) {
+            throwableToProcess = throwable.runtimeException
+        } else {
+            throwableToProcess = throwable
+        }
+        return throwableToProcess
     }
 
 }
