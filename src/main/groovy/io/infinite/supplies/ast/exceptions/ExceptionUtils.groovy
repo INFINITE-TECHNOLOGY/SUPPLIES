@@ -23,6 +23,11 @@ class ExceptionUtils {
         Throwable throwableToProcess
         if (throwable.hasProperty("runtimeException")) {
             throwableToProcess = throwable.runtimeException
+            if (throwable.runtimeException != null) {
+                throwableToProcess = throwable.runtimeException
+            } else {
+                throwableToProcess = throwable
+            }
         } else {
             throwableToProcess = throwable
         }
