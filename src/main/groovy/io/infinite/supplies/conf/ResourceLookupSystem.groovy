@@ -4,10 +4,14 @@ package io.infinite.supplies.conf
 import java.security.AccessController
 import java.security.PrivilegedAction
 
-class ResourceLookupSystem extends ResourceLookupWorkingDir {
+class ResourceLookupSystem extends ResourceLookupAbstract {
 
     ResourceLookupSystem(String moduleName, String resourceName, Boolean proceedSearch) {
         super(moduleName, resourceName, proceedSearch)
+    }
+
+    ResourceLookupSystem(String moduleName, String resourceName) {
+        super(moduleName, resourceName)
     }
 
     String getResourceAsString() {
@@ -22,12 +26,7 @@ class ResourceLookupSystem extends ResourceLookupWorkingDir {
             return new Scanner(ClassLoader.getSystemClassLoader().getResourceAsStream(getResourceName())).useDelimiter("\\A").next()
         }
         report("Not found.")
-        if (proceedSearch) {
-            return super.getResourceAsString()
-        } else {
-            return null
-        }
-
+        return null
     }
 
 }

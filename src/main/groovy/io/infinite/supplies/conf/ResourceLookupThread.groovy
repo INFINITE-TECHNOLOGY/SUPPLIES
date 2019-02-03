@@ -10,6 +10,10 @@ class ResourceLookupThread extends ResourceLookupSystem {
         super(moduleName, resourceName, proceedSearch)
     }
 
+    ResourceLookupThread(String moduleName, String resourceName) {
+        super(moduleName, resourceName)
+    }
+
     String getResourceAsString() {
         report("Searching for ${getResourceName()} config in application resource files using Thread classloader.")
         URL url = AccessController.doPrivileged(new PrivilegedAction<URL>() {

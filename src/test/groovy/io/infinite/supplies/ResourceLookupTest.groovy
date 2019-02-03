@@ -1,14 +1,14 @@
 package io.infinite.supplies
 
-import io.infinite.supplies.conf.ResourceLookupThread
+import io.infinite.supplies.conf.ResourceLookup
 import org.junit.Test
 
 class ResourceLookupTest {
 
     @Test
     void test() {
-        assert new ResourceLookupThread("supplies", "dummy/dummy.resource", true).getResourceAsString() != null
-        new ResourceLookupThread("supplies", "dummy/dummy.resource", true).getResourceAsString() == "Z"
+        assert new ResourceLookup("supplies", "dummy/dummy.resource", true).getResourceAsString() != null
+        new ResourceLookup("supplies", "dummy/dummy.resource", true).getResourceAsString() == "Z"
     }
 
 }

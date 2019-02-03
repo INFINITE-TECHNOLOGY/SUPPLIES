@@ -1,36 +1,28 @@
 package io.infinite.supplies.conf
 
-import io.infinite.supplies.ast.exceptions.RuntimeException
-
-class ResourceLookupWorkingDir {
-
-    String moduleName
-    String resourceName
-    Boolean proceedSearch = true
+class ResourceLookupWorkingDir extends ResourceLookupThread {
 
     ResourceLookupWorkingDir(String moduleName, String resourceName, Boolean proceedSearch) {
-        if (resourceName == null || resourceName == "") {
-            throw new RuntimeException("Resource name can not be null or empty: " + resourceName == "" ? "empty" : "null")
-        }
-        this.moduleName = moduleName
-        this.resourceName = resourceName
-        this.proceedSearch = proceedSearch
+        super(moduleName, resourceName, proceedSearch)
     }
 
     ResourceLookupWorkingDir(String moduleName, String resourceName) {
-        this.moduleName = moduleName
-        this.resourceName = resourceName
+        super(moduleName, resourceName)
     }
 
     String getResourceAsString() {
-        report("Searching for ${getResourceName()} config in: " + getConfPath() + " (full path: ${new File(getConfPath()).getCanonicalPath()})")
-        File file = new File(getConfPath())
+        report("Searching for ${resourceName} config in: " + confPath + " (full path: ${new File(confPath).getCanonicalPath()})")
+        File file = new File(confPath)
         if (file.exists()) {
             report("Found: " + file.getCanonicalPath())
             return file.getText()
         } else {
             report("Not found.")
-            return null
+            if (proceedSearch) {
+                super.getResourceAsString()
+            } else {
+                return null
+            }
         }
     }
 
@@ -42,8 +34,5 @@ class ResourceLookupWorkingDir {
         return getWorkingDir() + getResourceName()
     }
 
-    void report(String msg) {
-        println(getModuleName().padRight(16) + ": " + Thread.currentThread().getName() + ": " + msg)
-    }
 
 }
