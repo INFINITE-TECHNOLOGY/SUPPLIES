@@ -1,42 +1,44 @@
 package io.infinite.supplies.ast.metadata
 
 import groovy.transform.ToString
-import io.infinite.supplies.ast.other.ASTUtils
+import org.codehaus.groovy.ast.MethodNode
 import org.codehaus.groovy.ast.stmt.Statement
 
 @ToString(includeNames = true, includeFields = true, includeSuper = true)
 class MetaDataStatement extends MetaDataASTNode {
 
     String statementClassName
-    String sourceNodeName
+
+    MetaDataStatement(Statement statement, MethodNode methodNode) {
+        initUsingAstNode(statement)
+        additionalStatementInit(statement.getClass().getSimpleName())
+        initMethodMetaData(methodNode.name, methodNode.getDeclaringClass().getName())
+    }
+
+    void additionalStatementInit(
+            String statementClassName
+    ) {
+        this.statementClassName = statementClassName
+    }
 
     MetaDataStatement(
             String statementClassName,
-            String origCodeString,
-            Integer columnNumber,
-            Integer lastColumnNumber,
             Integer lineNumber,
             Integer lastLineNumber,
-            String sourceNodeName
+            Integer columnNumber,
+            Integer lastColumnNumber,
+            String methodName,
+            String className
     ) {
-        this.statementClassName = statementClassName
-        this.restoredScriptCode = origCodeString
-        this.columnNumber = columnNumber
-        this.lastColumnNumber = lastColumnNumber
-        this.lineNumber = lineNumber
-        this.lastLineNumber = lastLineNumber
-        this.sourceNodeName = sourceNodeName
-    }
-
-    MetaDataStatement(Statement statement) {
-        this(
-                statement.getClass().getSimpleName(),
-                new ASTUtils().codeString(statement),
-                statement.getColumnNumber(),
-                statement.getLastColumnNumber(),
-                statement.getLineNumber(),
-                statement.getLastLineNumber(),
-                null
+        initUsingMetaDataFields(
+                lineNumber,
+                lastLineNumber,
+                columnNumber,
+                lastColumnNumber
+        )
+        initMethodMetaData(methodName, className)
+        additionalStatementInit(
+                statementClassName
         )
     }
 

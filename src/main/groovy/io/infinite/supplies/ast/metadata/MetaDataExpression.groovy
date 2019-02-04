@@ -1,42 +1,49 @@
 package io.infinite.supplies.ast.metadata
 
 import groovy.transform.ToString
-import io.infinite.supplies.ast.other.ASTUtils
+import org.codehaus.groovy.ast.MethodNode
 import org.codehaus.groovy.ast.expr.Expression
 
 @ToString(includeNames = true, includeFields = true, includeSuper = true)
 class MetaDataExpression extends MetaDataASTNode {
 
     String expressionClassName
-    String sourceNodeName
+    String restoredScriptCode
+
+    MetaDataExpression(Expression expression, MethodNode methodNode, String restoredScriptCode) {
+        initUsingAstNode(expression)
+        additionalExpressionInit(expression.getClass().getSimpleName(), restoredScriptCode)
+        initMethodMetaData(methodNode.name, methodNode.getDeclaringClass().getName())
+    }
+
+    void additionalExpressionInit(
+            String expressionClassName,
+            String restoredScriptCode
+    ) {
+        this.expressionClassName = expressionClassName
+        this.restoredScriptCode = restoredScriptCode
+    }
 
     MetaDataExpression(
             String expressionClassName,
-            String origCodeString,
-            Integer columnNumber,
-            Integer lastColumnNumber,
+            String restoredScriptCode,
             Integer lineNumber,
             Integer lastLineNumber,
-            String sourceNodeName
+            Integer columnNumber,
+            Integer lastColumnNumber,
+            String methodName,
+            String className
     ) {
-        this.expressionClassName = expressionClassName
-        this.restoredScriptCode = origCodeString
-        this.columnNumber = columnNumber
-        this.lastColumnNumber = lastColumnNumber
-        this.lineNumber = lineNumber
-        this.lastLineNumber = lastLineNumber
-        this.sourceNodeName = sourceNodeName
-    }
-
-    MetaDataExpression(Expression expression) {
-        this(
-                expression.getClass().getSimpleName(),
-                new ASTUtils().codeString(expression),
-                expression.getColumnNumber(),
-                expression.getLastColumnNumber(),
-                expression.getLineNumber(),
-                expression.getLastLineNumber(),
-                null
+        initUsingMetaDataFields(
+                lineNumber,
+                lastLineNumber,
+                columnNumber,
+                lastColumnNumber
+        )
+        initMethodMetaData(methodName, className)
+        additionalExpressionInit(
+                expressionClassName,
+                restoredScriptCode
         )
     }
 
