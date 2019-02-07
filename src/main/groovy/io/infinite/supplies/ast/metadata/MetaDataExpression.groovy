@@ -1,10 +1,12 @@
 package io.infinite.supplies.ast.metadata
 
+import groovy.transform.CompileStatic
 import groovy.transform.ToString
 import org.codehaus.groovy.ast.MethodNode
 import org.codehaus.groovy.ast.expr.Expression
 
 @ToString(includeNames = true, includeFields = true, includeSuper = true)
+@CompileStatic
 class MetaDataExpression extends MetaDataASTNode {
 
     String expressionClassName
@@ -13,7 +15,12 @@ class MetaDataExpression extends MetaDataASTNode {
     MetaDataExpression(Expression expression, MethodNode methodNode, String restoredScriptCode) {
         initUsingAstNode(expression)
         additionalExpressionInit(expression.getClass().getSimpleName(), restoredScriptCode)
-        initMethodMetaData(methodNode.name, methodNode.getDeclaringClass().getName())
+        initMethodAndClassMetaData(methodNode, methodNode.getDeclaringClass())
+    }
+
+    MetaDataExpression(Expression expression) {
+        initUsingAstNode(expression)
+        initClassMetaData(expression.getDeclaringClass())
     }
 
     void additionalExpressionInit(
@@ -40,7 +47,7 @@ class MetaDataExpression extends MetaDataASTNode {
                 columnNumber,
                 lastColumnNumber
         )
-        initMethodMetaData(methodName, className)
+        initMethodAndClassMetaData(methodName, className)
         additionalExpressionInit(
                 expressionClassName,
                 restoredScriptCode

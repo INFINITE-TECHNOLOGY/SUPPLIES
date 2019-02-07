@@ -1,9 +1,13 @@
 package io.infinite.supplies.ast.metadata
 
+import groovy.transform.CompileStatic
 import groovy.transform.ToString
 import org.codehaus.groovy.ast.ASTNode
+import org.codehaus.groovy.ast.ClassNode
+import org.codehaus.groovy.ast.MethodNode
 
 @ToString(includeNames = true, includeFields = true)
+@CompileStatic
 abstract class MetaDataASTNode {
 
     Integer lineNumber
@@ -34,12 +38,24 @@ abstract class MetaDataASTNode {
         )
     }
 
-    void initMethodMetaData(
+    void initMethodAndClassMetaData(
+            MethodNode methodNode,
+            ClassNode classNode
+    ) {
+        this.methodName = methodNode.getName()
+        this.className = classNode.getName()
+    }
+
+    void initMethodAndClassMetaData(
             String methodName,
             String className
     ) {
         this.methodName = methodName
         this.className = className
+    }
+
+    void initClassMetaData(ClassNode classNode) {
+        this.className = classNode.getName()
     }
 
 }

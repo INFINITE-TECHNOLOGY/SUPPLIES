@@ -1,7 +1,10 @@
 package io.infinite.supplies.ast.exceptions
 
+import groovy.transform.CompileDynamic
+import groovy.transform.CompileStatic
 import org.codehaus.groovy.runtime.StackTraceUtils
 
+@CompileStatic
 class ExceptionUtils {
 
     String stacktrace(Throwable throwable) {
@@ -19,6 +22,7 @@ class ExceptionUtils {
         return stacktrace(new StackTraceUtils().sanitize(throwableToProcess))
     }
 
+    @CompileDynamic
     Throwable getThrowableToProcess(Throwable throwable) {
         Throwable throwableToProcess
         if (throwable.hasProperty("runtimeException")) {

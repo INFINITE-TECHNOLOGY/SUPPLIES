@@ -1,10 +1,12 @@
 package io.infinite.supplies.ast.metadata
 
+import groovy.transform.CompileStatic
 import groovy.transform.ToString
 import org.codehaus.groovy.ast.MethodNode
 import org.codehaus.groovy.ast.stmt.Statement
 
 @ToString(includeNames = true, includeFields = true, includeSuper = true)
+@CompileStatic
 class MetaDataStatement extends MetaDataASTNode {
 
     String statementClassName
@@ -12,7 +14,12 @@ class MetaDataStatement extends MetaDataASTNode {
     MetaDataStatement(Statement statement, MethodNode methodNode) {
         initUsingAstNode(statement)
         additionalStatementInit(statement.getClass().getSimpleName())
-        initMethodMetaData(methodNode.name, methodNode.getDeclaringClass().getName())
+        initMethodAndClassMetaData(methodNode, methodNode.getDeclaringClass())
+    }
+
+    MetaDataStatement(Statement statement) {
+        initUsingAstNode(statement)
+        additionalStatementInit(statement.getClass().getSimpleName())
     }
 
     void additionalStatementInit(
@@ -36,7 +43,7 @@ class MetaDataStatement extends MetaDataASTNode {
                 columnNumber,
                 lastColumnNumber
         )
-        initMethodMetaData(methodName, className)
+        initMethodAndClassMetaData(methodName, className)
         additionalStatementInit(
                 statementClassName
         )

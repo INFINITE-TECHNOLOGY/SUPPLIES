@@ -1,5 +1,8 @@
 package io.infinite.supplies.conf
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class ResourceLookup extends ResourceLookupWorkingDir {
     ResourceLookup(String moduleName, String resourceName, Boolean proceedSearch) {
         super(moduleName, resourceName, proceedSearch)
