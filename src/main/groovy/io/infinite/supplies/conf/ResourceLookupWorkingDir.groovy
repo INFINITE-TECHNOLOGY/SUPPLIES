@@ -34,5 +34,4 @@ class ResourceLookupWorkingDir extends ResourceLookupThread {
         return getWorkingDir() + getResourceName()
     }
 
-
 }

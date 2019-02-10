@@ -85,11 +85,11 @@ class CacheTransformation extends AbstractASTTransformation {
     }
 
     Class getMapImplementation() {
-        return EagerMap.class
+        return ClosureCacheMap.class
     }
 
     String prepareMapVarName() {
-        return "eagerMap"
+        return "closureCacheMap"
     }
 
     String getDeclaredMapVarName(FieldNode fieldNode) {

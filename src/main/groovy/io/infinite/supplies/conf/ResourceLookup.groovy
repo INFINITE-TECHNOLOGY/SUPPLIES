@@ -1,6 +1,7 @@
 package io.infinite.supplies.conf
 
 class ResourceLookup extends ResourceLookupWorkingDir {
+
     ResourceLookup(String moduleName, String resourceName, Boolean proceedSearch) {
         super(moduleName, resourceName, proceedSearch)
     }
@@ -14,4 +15,5 @@ class ResourceLookup extends ResourceLookupWorkingDir {
         report("Application working dir: " + new File("./").getCanonicalPath())
         return super.getResourceAsString()
     }
+
 }

@@ -1,20 +1,20 @@
 package io.infinite.supplies
 
 import groovy.transform.CompileDynamic
-import io.infinite.supplies.ast.cache.EagerMap
+import io.infinite.supplies.ast.cache.ClosureCacheMap
 import org.junit.Test
 
 class CacheTestCompiling extends TestBase {
 
-    EagerMap eagerMap = new EagerMap()
+    ClosureCacheMap closureCacheMap = new ClosureCacheMap()
 
-    String nullString = eagerMap.passThrough('nullString', {
+    String nullString = closureCacheMap.passThrough('nullString', {
         null
     }, this)
-    String string = eagerMap.passThrough('string', {
+    String string = closureCacheMap.passThrough('string', {
         'test string2'
     }, this)
-    String uuid = eagerMap.passThrough('uuid', {
+    String uuid = closureCacheMap.passThrough('uuid', {
         UUID.randomUUID().toString()
     }, this)
 

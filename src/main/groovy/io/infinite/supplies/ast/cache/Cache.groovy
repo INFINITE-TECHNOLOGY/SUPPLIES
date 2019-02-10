@@ -23,8 +23,8 @@ import java.lang.annotation.Target
  * </code></pre>
  * Is transformed to:<br>
  * <pre><code>
- *     static EagerMap eagerMap = new EagerMap()
- *     File file = eagerMap.passThrough('file', {
+ *     static ClosureCacheMap closureCacheMap = new ClosureCacheMap()
+ *     File file = closureCacheMap.passThrough('file', {
  *         new File("./")
  *     })
  * </code></pre>
