@@ -1,9 +1,8 @@
 package io.infinite.supplies.ast.exceptions
 
-import groovy.transform.CompileStatic
+
 import io.infinite.supplies.ast.metadata.MetaDataASTNode
 
-@CompileStatic
 class RuntimeException extends Exception {
 
     RuntimeException(String var1) {

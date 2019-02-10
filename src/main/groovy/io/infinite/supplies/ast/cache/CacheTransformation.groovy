@@ -1,5 +1,6 @@
 package io.infinite.supplies.ast.cache
 
+import groovy.transform.CompileDynamic
 import io.infinite.supplies.ast.exceptions.CompileException
 import io.infinite.supplies.ast.other.ASTUtils
 import jdk.internal.org.objectweb.asm.Opcodes
@@ -13,6 +14,7 @@ import org.codehaus.groovy.control.SourceUnit
 import org.codehaus.groovy.transform.AbstractASTTransformation
 import org.codehaus.groovy.transform.GroovyASTTransformation
 
+@CompileDynamic
 @GroovyASTTransformation(
         phase = CompilePhase.SEMANTIC_ANALYSIS
 )
