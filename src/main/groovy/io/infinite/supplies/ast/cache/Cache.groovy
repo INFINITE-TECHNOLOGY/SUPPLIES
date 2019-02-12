@@ -1,6 +1,6 @@
 package io.infinite.supplies.ast.cache
 
-
+import groovy.transform.CompileStatic
 import org.codehaus.groovy.transform.GroovyASTTransformationClass
 
 import java.lang.annotation.ElementType
@@ -32,6 +32,7 @@ import java.lang.annotation.Target
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @GroovyASTTransformationClass("io.infinite.supplies.ast.cache.CacheTransformation")
+@CompileStatic
 @interface Cache {
 
 }
