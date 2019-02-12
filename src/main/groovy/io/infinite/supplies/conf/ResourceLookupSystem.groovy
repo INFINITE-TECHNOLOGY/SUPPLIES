@@ -15,7 +15,7 @@ class ResourceLookupSystem extends ResourceLookupAbstract {
     }
 
     String getResourceAsString() {
-        report("Searching for Bobbin config in application resource files using System classloader.")
+        report("Searching for ${getResourceName()} in application resource files using System classloader.")
         URL url = AccessController.doPrivileged(new PrivilegedAction<URL>() {
             URL run() {
                 return ClassLoader.getSystemClassLoader().getResource(resourceName)

@@ -11,7 +11,7 @@ class ResourceLookupWorkingDir extends ResourceLookupThread {
     }
 
     String getResourceAsString() {
-        report("Searching for ${resourceName} config in: " + confPath + " (full path: ${new File(confPath).getCanonicalPath()})")
+        report("Searching for ${resourceName} in: " + confPath + " (full path: ${new File(confPath).getCanonicalPath()})")
         File file = new File(confPath)
         if (file.exists()) {
             report("Found: " + file.getCanonicalPath())
