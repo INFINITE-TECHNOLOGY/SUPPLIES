@@ -1,10 +1,11 @@
 package io.infinite.supplies.ast.metadata
 
-
+import groovy.transform.CompileStatic
 import groovy.transform.ToString
 import org.codehaus.groovy.ast.MethodNode
 
 @ToString(includeNames = true, includeFields = true, includeSuper = true)
+@CompileStatic
 class MetaDataMethodNode extends MetaDataASTNode {
 
     MetaDataMethodNode(MethodNode methodNode) {
