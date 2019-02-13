@@ -1,13 +1,12 @@
 package io.infinite.supplies.ast.metadata
 
-import groovy.transform.CompileStatic
+
 import groovy.transform.ToString
 import org.codehaus.groovy.ast.ASTNode
 import org.codehaus.groovy.ast.ClassNode
 import org.codehaus.groovy.ast.MethodNode
 
 @ToString(includeNames = true, includeFields = true)
-@CompileStatic
 abstract class MetaDataASTNode {
 
     Integer lineNumber

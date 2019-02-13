@@ -1,11 +1,10 @@
 package io.infinite.supplies.ast.cache
 
-import groovy.transform.CompileStatic
+
 import io.infinite.supplies.ast.other.ASTUtils
 
 import java.util.concurrent.ConcurrentHashMap
 
-@CompileStatic
 class ClosureCacheMap extends ConcurrentHashMap {
 
     ASTUtils astUtils = new ASTUtils()

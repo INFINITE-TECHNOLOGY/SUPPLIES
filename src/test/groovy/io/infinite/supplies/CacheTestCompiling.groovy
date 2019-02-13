@@ -1,6 +1,6 @@
 package io.infinite.supplies
 
-import groovy.transform.CompileDynamic
+
 import io.infinite.supplies.ast.cache.ClosureCacheMap
 import org.junit.Test
 
@@ -19,7 +19,6 @@ class CacheTestCompiling extends TestBase {
     }, this)
 
     @Test
-    @CompileDynamic
     void test() {
         def staticInitTestSource = getTestObjectFromResource("tests", "CacheTestCompiling.groovy")
         assert staticInitTestSource.nullString == null

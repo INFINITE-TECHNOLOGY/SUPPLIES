@@ -1,9 +1,8 @@
 package io.infinite.supplies.conf
 
-import groovy.transform.CompileStatic
+
 import io.infinite.supplies.ast.exceptions.RuntimeException
 
-@CompileStatic
 class ResourceLookupAbstract {
 
     String moduleName

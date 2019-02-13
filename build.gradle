@@ -3,7 +3,6 @@ File
 https://github.com/virtualdogbert/GroovyConfigWriter/blob/master/build.gradle
 has been used as basis for this file.
  */
-/*
 buildscript {
     repositories {
         mavenLocal()
@@ -11,10 +10,9 @@ buildscript {
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath 'com.virtualdogbert:enterprise-groovy-plugin:1.0.RC2'
+        classpath 'com.virtualdogbert:enterprise-groovy-plugin:1.0.RC3'
     }
-}*/
-
+}
 
 plugins {
     id "groovy"
@@ -26,7 +24,7 @@ plugins {
     //id "enterprise.groovy.plugin" version "1.0.RC2"
 }
 
-//apply plugin: "enterprise.groovy.plugin"
+apply plugin: "enterprise.groovy.plugin"
 
 
 sourceCompatibility = 1.8
