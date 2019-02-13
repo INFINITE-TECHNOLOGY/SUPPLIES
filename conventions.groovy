@@ -19,7 +19,7 @@
 
 conventions = [
         disableDynamicCompile       : false,
-        dynamicCompileWhiteList     : ['CacheTestCompiling'],
+        dynamicCompileWhiteList     : [],
 
         compileStaticExtensions     : [],
         limitCompileStaticExtensions: false,
