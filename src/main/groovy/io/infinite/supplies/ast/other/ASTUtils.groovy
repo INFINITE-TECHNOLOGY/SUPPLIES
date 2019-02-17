@@ -70,4 +70,18 @@ class ASTUtils {
         }
     }
 
+    Boolean methodArgumentsPresent(Object iArgs) {
+        if (iArgs != null) {
+            if (iArgs instanceof Collection) {
+                return iArgs.size() > 0
+            } else if (iArgs instanceof Object[]) {
+                return ((Object[])iArgs).length > 0
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
 }
