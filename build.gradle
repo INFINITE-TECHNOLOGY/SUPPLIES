@@ -4,7 +4,6 @@ https://github.com/virtualdogbert/GroovyConfigWriter/blob/master/build.gradle
 has been used as basis for this file.
  */
 
-
 plugins {
     id "groovy"
     id "maven-publish"
@@ -14,7 +13,6 @@ plugins {
     id "jacoco"
     id "enterprise.groovy.plugin" version "1.0.RC4"
 }
-
 
 sourceCompatibility = 1.8
 group = "io.infinite"
@@ -37,6 +35,7 @@ sourceSets {
 
 dependencies {
     compile "org.codehaus.groovy:groovy-all:2.5.4"
+
     testCompile "junit:junit:4.12"
 }
 
@@ -128,5 +127,3 @@ check.dependsOn jacocoTestReport
 //Remote debug config, useful for debugging AST transforms.
 //compileGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
 //compileTestGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
-
-

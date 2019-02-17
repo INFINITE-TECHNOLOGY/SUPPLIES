@@ -1,6 +1,7 @@
 package io.infinite.supplies.ast.other
 
 import groovy.inspect.swingui.AstNodeToScriptVisitor
+import groovy.transform.CompileStatic
 import io.infinite.supplies.ast.exceptions.CompileException
 import io.infinite.supplies.ast.metadata.MetaDataExpression
 import io.infinite.supplies.ast.metadata.MetaDataMethodNode
@@ -15,6 +16,7 @@ import org.codehaus.groovy.ast.stmt.Statement
 
 import java.lang.reflect.Field
 
+@CompileStatic
 class ASTUtils {
 
     String codeString(ASTNode iAstNode) {
@@ -65,6 +67,20 @@ class ASTUtils {
             return defaultValue
         } else {
             throw new CompileException(annotationNode, "Unsupported annotation \"$annotationName\" type: " + memberExpression.getClass().getCanonicalName() + " for annotation: " + annotationName)
+        }
+    }
+
+    Boolean methodArgumentsPresent(Object iArgs) {
+        if (iArgs != null) {
+            if (iArgs instanceof Collection) {
+                return iArgs.size() > 0
+            } else if (iArgs instanceof Object[]) {
+                return ((Object[])iArgs).length > 0
+            } else {
+                return false
+            }
+        } else {
+            return false
         }
     }
 

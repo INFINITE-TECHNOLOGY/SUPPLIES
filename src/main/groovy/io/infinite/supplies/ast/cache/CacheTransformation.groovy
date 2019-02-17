@@ -50,7 +50,7 @@ class CacheTransformation extends AbstractASTTransformation {
         sourceUnit.AST.classes.each {
             new VariableScopeVisitor(sourceUnit, true).visitClass(it)
         }
-        println(new ASTUtils().codeString(fieldNode.getInitialValueExpression()))
+        //println(new ASTUtils().codeString(fieldNode.getInitialValueExpression()))
     }
 
     void setInitialValueExpression(FieldNode fieldNode) {
@@ -85,11 +85,11 @@ class CacheTransformation extends AbstractASTTransformation {
     }
 
     Class getMapImplementation() {
-        return EagerMap.class
+        return ClosureCacheMap.class
     }
 
     String prepareMapVarName() {
-        return "eagerMap"
+        return "closureCacheMap"
     }
 
     String getDeclaredMapVarName(FieldNode fieldNode) {

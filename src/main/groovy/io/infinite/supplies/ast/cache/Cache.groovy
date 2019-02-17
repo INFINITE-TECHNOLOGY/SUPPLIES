@@ -1,6 +1,6 @@
 package io.infinite.supplies.ast.cache
 
-
+import groovy.transform.CompileStatic
 import org.codehaus.groovy.transform.GroovyASTTransformationClass
 
 import java.lang.annotation.ElementType
@@ -19,19 +19,20 @@ import java.lang.annotation.Target
  * Example usage:<br>
  * <pre><code>
  *     &#64;Cache
- *     File file = new File("./file.txt")
+ *     File fileField = new File("./readme.txt")
  * </code></pre>
  * Is transformed to:<br>
  * <pre><code>
- *     static EagerMap eagerMap = new EagerMap()
- *     File file = eagerMap.passThrough('file', {
- *         new File("./")
- *     })
+ *     static ClosureCacheMap closureCacheMap = new ClosureCacheMap()
+ *     File fileField = closureCacheMap.passThrough('fileField', {
+ *         new File("./readme.txt")
+ *     }, this)
  * </code></pre>
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @GroovyASTTransformationClass("io.infinite.supplies.ast.cache.CacheTransformation")
+@CompileStatic
 @interface Cache {
 
 }

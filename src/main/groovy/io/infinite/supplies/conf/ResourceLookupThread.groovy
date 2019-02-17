@@ -1,9 +1,11 @@
 package io.infinite.supplies.conf
 
+import groovy.transform.CompileStatic
 
 import java.security.AccessController
 import java.security.PrivilegedAction
 
+@CompileStatic
 class ResourceLookupThread extends ResourceLookupSystem {
 
     ResourceLookupThread(String moduleName, String resourceName, Boolean proceedSearch) {
@@ -15,7 +17,7 @@ class ResourceLookupThread extends ResourceLookupSystem {
     }
 
     String getResourceAsString() {
-        report("Searching for ${getResourceName()} config in application resource files using Thread classloader.")
+        report("Searching for ${getResourceName()} in application resource files using Thread classloader.")
         URL url = AccessController.doPrivileged(new PrivilegedAction<URL>() {
             URL run() {
                 return getClassLoader().getResource(resourceName)
