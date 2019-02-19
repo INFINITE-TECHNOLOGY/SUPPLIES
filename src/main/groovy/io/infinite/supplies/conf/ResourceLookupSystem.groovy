@@ -1,11 +1,8 @@
 package io.infinite.supplies.conf
 
-import groovy.transform.CompileStatic
-
 import java.security.AccessController
 import java.security.PrivilegedAction
 
-@CompileStatic
 class ResourceLookupSystem extends ResourceLookupAbstract {
 
     ResourceLookupSystem(String moduleName, String resourceName, Boolean proceedSearch) {

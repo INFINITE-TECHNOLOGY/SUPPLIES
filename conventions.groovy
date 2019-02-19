@@ -22,7 +22,7 @@ Map conventions = [
         whiteListScripts            : true,
 
         disableDynamicCompile       : false,
-        dynamicCompileWhiteList     : ['CacheTestCompiling'],
+        dynamicCompileWhiteList     : [],
 
         compileStaticExtensions     : [],
         limitCompileStaticExtensions: false,
