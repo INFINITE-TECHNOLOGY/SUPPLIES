@@ -17,12 +17,17 @@
  *  under the License.
  */
 
-conventions = [
+Map conventions = [
+        disable                     : false,
+        whiteListScripts            : true,
+
         disableDynamicCompile       : false,
         dynamicCompileWhiteList     : ['CacheTestCompiling'],
 
         compileStaticExtensions     : [],
         limitCompileStaticExtensions: false,
-        defAllowed                  : true,
+
+        defAllowed                  : false,
         skipDefaultPackage          : false
 ]
+System.setProperty('enterprise.groovy.conventions', "conventions=${conventions.inspect()}")

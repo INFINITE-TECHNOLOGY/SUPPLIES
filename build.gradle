@@ -3,18 +3,6 @@ File
 https://github.com/virtualdogbert/GroovyConfigWriter/blob/master/build.gradle
 has been used as basis for this file.
  */
-/*
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven { url "https://repo.grails.org/grails/core" }
-    }
-    dependencies {
-        classpath 'com.virtualdogbert:enterprise-groovy-plugin:1.0.RC2'
-    }
-}*/
-
 
 plugins {
     id "groovy"
@@ -23,11 +11,8 @@ plugins {
     id "com.jfrog.artifactory" version "4.8.1"
     id "idea"
     id "jacoco"
-    //id "enterprise.groovy.plugin" version "1.0.RC2"
+    id "enterprise.groovy.plugin" version "1.0.RC4"
 }
-
-//apply plugin: "enterprise.groovy.plugin"
-
 
 sourceCompatibility = 1.8
 group = "io.infinite"
