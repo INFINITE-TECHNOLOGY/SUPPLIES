@@ -12,6 +12,7 @@ import org.codehaus.groovy.ast.expr.ConstantExpression
 import org.codehaus.groovy.ast.expr.Expression
 import org.codehaus.groovy.ast.expr.PropertyExpression
 import org.codehaus.groovy.ast.stmt.Statement
+import org.codehaus.groovy.control.SourceUnit
 
 import java.lang.reflect.Field
 
@@ -73,13 +74,24 @@ class ASTUtils {
             if (iArgs instanceof Collection) {
                 return iArgs.size() > 0
             } else if (iArgs instanceof Object[]) {
-                return ((Object[])iArgs).length > 0
+                return ((Object[]) iArgs).length > 0
             } else {
                 return false
             }
         } else {
             return false
         }
+    }
+
+    /**
+     * Taken from: com.virtualdogbert.ast.EnterpriseGroovyASTTransformation
+     */
+    Boolean isSkipGlobalTransformation(SourceUnit sourceUnit) {
+        return (sourceUnit.name == 'embedded_script_in_groovy_Ant_task' ||
+                sourceUnit.name.startsWith('Script') ||
+                sourceUnit.name.startsWith('script') ||
+                sourceUnit.name.startsWith('GStringTemplateScript')
+        )
     }
 
 }
