@@ -1,4 +1,4 @@
-# Infinite Technology ♾ Supplies
+# Infinite Technology ∞ Supplies 📦
 
 **Misc commons/utilities/tools**
 
