@@ -34,8 +34,10 @@ sourceSets {
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.5.4"
+    implementation "org.codehaus.groovy:groovy-all:2.5.4"
+    compileOnly "org.codehaus.groovy:groovy-all:2.5.4"
     testCompile "org.junit.jupiter:junit-jupiter-api:5.4.0"
+    testCompile "org.codehaus.groovy:groovy-all:2.5.4"
 }
 
 task sourceJar(type: Jar) {
