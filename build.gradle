@@ -37,7 +37,6 @@ dependencies {
     implementation "org.codehaus.groovy:groovy-all:2.5.4"
     compileOnly "org.codehaus.groovy:groovy-all:2.5.4"
     testCompile "org.junit.jupiter:junit-jupiter-api:5.4.0"
-    testCompile "org.codehaus.groovy:groovy-all:2.5.4"
 }
 
 task sourceJar(type: Jar) {
@@ -128,3 +127,9 @@ check.dependsOn jacocoTestReport
 //Remote debug config, useful for debugging AST transforms.
 //compileGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
 //compileTestGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
+
+configurations {
+    providedRuntime
+    compile.exclude(group: 'junit')
+    compile.exclude(group: 'org.junit.platform')
+}

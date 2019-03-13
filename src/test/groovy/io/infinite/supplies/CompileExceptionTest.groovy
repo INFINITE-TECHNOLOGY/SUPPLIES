@@ -4,7 +4,7 @@ import io.infinite.supplies.ast.metadata.MetaDataMethodNode
 import org.codehaus.groovy.ast.ClassHelper
 import org.codehaus.groovy.ast.MethodNode
 import org.codehaus.groovy.ast.stmt.EmptyStatement
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class CompileExceptionTest {
 
