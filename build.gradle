@@ -16,7 +16,7 @@ plugins {
 
 sourceCompatibility = 1.8
 group = "io.infinite"
-version = "1.1.1-SNAPSHOT"
+version = "1.1.2-SNAPSHOT"
 description = "Misc commons/utilities/tools"
 
 wrapper {
@@ -34,8 +34,7 @@ sourceSets {
 }
 
 dependencies {
-    implementation "org.codehaus.groovy:groovy-all:2.5.4"
-    compileOnly "org.codehaus.groovy:groovy-all:2.5.4"
+    compile "org.codehaus.groovy:groovy-all:2.5.4"
     testCompile "org.junit.jupiter:junit-jupiter-api:5.4.0"
 }
 
