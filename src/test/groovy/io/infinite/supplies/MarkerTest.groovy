@@ -1,6 +1,6 @@
 package io.infinite.supplies
 
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 class MarkerTest extends TestBase {
 
