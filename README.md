@@ -6,7 +6,7 @@ Release info:
 
 |Attribute\Release type|Latest|Stable|
 |----------------------|------|------|
-|Version|2.0.0-SNAPSHOT|1.1.0|
+|Version|2.0.0-SNAPSHOT|1.1.x|
 |Branch|[master](https://github.com/INFINITE-TECHNOLOGY/SUPPLIES)|[SUPPLIES_1_1_X](https://github.com/INFINITE-TECHNOLOGY/SUPPLIES/tree/SUPPLIES_1_1_X)|
 |CI Build status|[![Build Status](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES.svg?branch=master)](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES)|[![Build Status](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES.svg?branch=SUPPLIES_1_1_X)](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES)|
 |Test coverage|[![codecov](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/master/graphs/badge.svg)](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/master/graphs)|[![codecov](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/SUPPLIES_1_1_X/graphs/badge.svg)](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/SUPPLIES_1_1_X/graphs)|
