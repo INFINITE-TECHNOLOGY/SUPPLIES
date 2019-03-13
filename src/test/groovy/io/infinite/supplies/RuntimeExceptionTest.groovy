@@ -2,7 +2,7 @@ package io.infinite.supplies
 
 import io.infinite.supplies.ast.exceptions.ExceptionUtils
 import io.infinite.supplies.ast.exceptions.RuntimeException
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class RuntimeExceptionTest {
 
