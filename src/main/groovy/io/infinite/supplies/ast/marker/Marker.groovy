@@ -33,10 +33,10 @@ class Marker extends MetaDataASTNode {
 
     String sourceUnitName
 
-    Marker(MethodNode methodNode) {
-        initUsingAstNode(methodNode)
-    }
-
+    /**
+     * This constructor should NOT be used by the users.
+     * This is used in automatically generated code only.
+     */
     Marker(
             Integer lineNumber,
             Integer lastLineNumber,
@@ -55,6 +55,10 @@ class Marker extends MetaDataASTNode {
         this.sourceUnitName = sourceUnitName
     }
 
+    /**
+     * This constructor should be used by the users.
+     * It will be automatically enriched with arguments during compilation stage.
+     */
     Marker() {
 
     }
