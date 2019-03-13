@@ -1,7 +1,7 @@
 package io.infinite.supplies
 
 import io.infinite.supplies.conf.ResourceLookup
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 class ResourceLookupTest {
 

@@ -2,7 +2,7 @@ package io.infinite.supplies
 
 import groovy.transform.CompileDynamic
 import io.infinite.supplies.ast.cache.ClosureCacheMap
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 class CacheTestCompiling extends TestBase {
 
