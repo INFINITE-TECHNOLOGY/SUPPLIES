@@ -65,7 +65,7 @@ Marker: className=tests.MarkerTestClass, lineNumber=7, columnNumber=21, sourceUn
 Just run in the Groovy Console (requires Groovy 2.5.4):
 
 ```groovy
-@Grab('io.infinite:supplies:1.1.1')
+@Grab('io.infinite:supplies:1.1.3')
 import io.infinite.supplies.ast.marker.Marker
 import io.infinite.supplies.ast.cache.CacheFieldInit
 import java.util.UUID
