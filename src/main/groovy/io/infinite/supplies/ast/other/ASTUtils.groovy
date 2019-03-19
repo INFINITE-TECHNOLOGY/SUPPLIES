@@ -75,6 +75,8 @@ class ASTUtils {
                 return iArgs.size() > 0
             } else if (iArgs instanceof Object[]) {
                 return ((Object[]) iArgs).length > 0
+            } else if (iArgs instanceof Map) {
+                return ((Map) iArgs).size() > 0
             } else {
                 return false
             }
