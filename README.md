@@ -12,6 +12,26 @@ Release info:
 |Test coverage|[![codecov](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/master/graphs/badge.svg)](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/master/graphs)|[![codecov](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/SUPPLIES_1_1_X/graphs/badge.svg)](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/SUPPLIES_1_1_X/graphs)|
 |Library (Maven)|[oss.jfrog.org snapshot](https://oss.jfrog.org/artifactory/webapp/#/artifacts/browse/tree/General/oss-snapshot-local/io/infinite/supplies/2.0.0-SNAPSHOT)|[ ![Download](https://api.bintray.com/packages/infinite-technology/m2/supplies/images/download.svg) ](https://bintray.com/infinite-technology/m2/supplies/_latestVersion)|
 
+> ❇ Supplies are available both in `JCenter` and `Maven Central` repositories.
+
+## Gradle
+
+```groovy
+    compile "io.i-t:supplies:1.1.8"
+```
+
+## Maven
+
+> ❗ Note that there is no `<type>pom</type>`
+
+```xml
+        <dependency>
+            <groupId>io.i-t</groupId>
+            <artifactId>supplies</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+```
+
 ## `@CacheFieldInit`
 
 Caches the initialization of annotated field.  
@@ -65,7 +85,7 @@ Marker: className=tests.MarkerTestClass, lineNumber=7, columnNumber=21, sourceUn
 Just run in the Groovy Console (requires Groovy 2.5.4):
 
 ```groovy
-@Grab('io.infinite:supplies:1.1.3')
+@Grab('io.i-t:supplies:1.1.8')
 import io.infinite.supplies.ast.marker.Marker
 import io.infinite.supplies.ast.cache.CacheFieldInit
 import java.util.UUID
