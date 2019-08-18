@@ -112,7 +112,7 @@ bintray {
     def projectDescription = project.description
     pkg {
         userOrg = "infinite-technology"
-        repo = "m2"
+        repo = "io.i-t"
         name = "supplies"
         desc = "Misc commons/utilities/tools"
         issueTrackerUrl = "https://github.com/INFINITE-TECHNOLOGY/SUPPLIES/issues"
