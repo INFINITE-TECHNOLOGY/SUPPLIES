@@ -10,7 +10,7 @@ Release info:
 |Branch|[master](https://github.com/INFINITE-TECHNOLOGY/SUPPLIES)|[SUPPLIES_1_1_X](https://github.com/INFINITE-TECHNOLOGY/SUPPLIES/tree/SUPPLIES_1_1_X)|
 |CI Build status|[![Build Status](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES.svg?branch=master)](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES)|[![Build Status](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES.svg?branch=SUPPLIES_1_1_X)](https://travis-ci.com/INFINITE-TECHNOLOGY/SUPPLIES)|
 |Test coverage|[![codecov](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/master/graphs/badge.svg)](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/master/graphs)|[![codecov](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/SUPPLIES_1_1_X/graphs/badge.svg)](https://codecov.io/gh/INFINITE-TECHNOLOGY/SUPPLIES/branch/SUPPLIES_1_1_X/graphs)|
-|Library (Maven)|[oss.jfrog.org snapshot](https://oss.jfrog.org/artifactory/webapp/#/artifacts/browse/tree/General/oss-snapshot-local/io/infinite/supplies/2.0.0-SNAPSHOT)|[ ![Download](https://api.bintray.com/packages/infinite-technology/m2/supplies/images/download.svg) ](https://bintray.com/infinite-technology/m2/supplies/_latestVersion)|
+|Library (Maven)|[oss.jfrog.org snapshot](https://oss.jfrog.org/artifactory/webapp/#/artifacts/browse/tree/General/oss-snapshot-local/io/infinite/supplies/2.0.0-SNAPSHOT)|[ ![Download](https://api.bintray.com/packages/infinite-technology/io.i-t/supplies/images/download.svg) ](https://bintray.com/infinite-technology/io.i-t/supplies/_latestVersion)|
 
 > ❇ Supplies are available both in `JCenter` and `Maven Central` repositories.
 

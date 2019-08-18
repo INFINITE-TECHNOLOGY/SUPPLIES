@@ -16,7 +16,7 @@ plugins {
 
 sourceCompatibility = 1.8
 group = "io.i-t"
-version = "1.1.9-SNAPSHOT"
+version = "1.1.10-SNAPSHOT"
 description = "Misc commons/utilities/tools"
 
 ext.groovyVersion = '2.5.4'
@@ -112,7 +112,7 @@ bintray {
     def projectDescription = project.description
     pkg {
         userOrg = "infinite-technology"
-        repo = "m2"
+        repo = "io.i-t"
         name = "supplies"
         desc = "Misc commons/utilities/tools"
         issueTrackerUrl = "https://github.com/INFINITE-TECHNOLOGY/SUPPLIES/issues"
