@@ -17,7 +17,7 @@ Release info:
 ## Gradle
 
 ```groovy
-    compile "io.i-t:supplies:1.1.8"
+    compile "io.i-t:supplies:1.1.9"
 ```
 
 ## Maven
@@ -28,7 +28,7 @@ Release info:
         <dependency>
             <groupId>io.i-t</groupId>
             <artifactId>supplies</artifactId>
-            <version>1.1.8</version>
+            <version>1.1.9</version>
         </dependency>
 ```
 
@@ -85,7 +85,7 @@ Marker: className=tests.MarkerTestClass, lineNumber=7, columnNumber=21, sourceUn
 Just run in the Groovy Console (requires Groovy 2.5.4):
 
 ```groovy
-@Grab('io.i-t:supplies:1.1.8')
+@Grab('io.i-t:supplies:1.1.9')
 import io.infinite.supplies.ast.marker.Marker
 import io.infinite.supplies.ast.cache.CacheFieldInit
 import java.util.UUID
