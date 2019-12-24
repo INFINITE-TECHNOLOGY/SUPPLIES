@@ -16,7 +16,7 @@ plugins {
 
 sourceCompatibility = 1.8
 group = "io.i-t"
-version = "1.1.10-SNAPSHOT"
+version = "1.1.10"
 description = "Misc commons/utilities/tools"
 
 ext.groovyVersion = '2.5.4'
@@ -105,8 +105,10 @@ artifacts {
 }
 
 bintray {
-    user = System.getProperty("bintrayuser")
-    key = System.getProperty("bintraypassword")
+    user = System.getenv("bintrayuser")
+    key = System.getenv("bintraypassword")
+    System.out.println(user)
+    System.out.println(key)
     publications = ["groovyMaven"]
     def projectName = project.name
     def projectDescription = project.description
