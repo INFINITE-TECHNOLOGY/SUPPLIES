@@ -11,12 +11,12 @@ plugins {
     id "com.jfrog.artifactory" version "4.8.1"
     id "idea"
     id "jacoco"
-    id "enterprise.groovy.plugin" version "1.0.1"
+    id "enterprise.groovy.plugin" version "1.0.4"
 }
 
 sourceCompatibility = 1.8
 group = "io.i-t"
-version = "1.1.10"
+version = "1.1.11"
 description = "Misc commons/utilities/tools"
 
 ext.groovyVersion = '2.5.4'
@@ -159,7 +159,7 @@ jacocoTestReport {
     }
 }
 check.dependsOn jacocoTestReport
-bintrayUpload.dependsOn javadocJar
+//bintrayUpload.dependsOn javadocJar
 //Remote debug config, useful for debugging AST transforms.
 //compileGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
 //compileTestGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
