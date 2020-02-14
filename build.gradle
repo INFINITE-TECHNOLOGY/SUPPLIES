@@ -16,7 +16,7 @@ plugins {
 
 sourceCompatibility = 1.8
 group = "io.i-t"
-version = "1.1.11"
+version = "1.1.12-SNAPSHOT"
 description = "Misc commons/utilities/tools"
 
 ext.groovyVersion = '2.5.4'
