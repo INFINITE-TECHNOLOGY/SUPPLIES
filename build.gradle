@@ -11,7 +11,7 @@ plugins {
     id "com.jfrog.artifactory" version "4.8.1"
     id "idea"
     id "jacoco"
-    id "enterprise.groovy.plugin" version "1.0.1"
+    id "enterprise.groovy.plugin" version "1.0.4"
 }
 
 sourceCompatibility = 1.8
@@ -105,8 +105,10 @@ artifacts {
 }
 
 bintray {
-    user = System.getProperty("bintrayuser")
-    key = System.getProperty("bintraypassword")
+    user = System.getenv("bintrayuser")
+    key = System.getenv("bintraypassword")
+    System.out.println(user)
+    System.out.println(key)
     publications = ["groovyMaven"]
     def projectName = project.name
     def projectDescription = project.description
@@ -157,7 +159,7 @@ jacocoTestReport {
     }
 }
 check.dependsOn jacocoTestReport
-bintrayUpload.dependsOn javadocJar
+//bintrayUpload.dependsOn javadocJar
 //Remote debug config, useful for debugging AST transforms.
 //compileGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
 //compileTestGroovy.groovyOptions.forkOptions.jvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
