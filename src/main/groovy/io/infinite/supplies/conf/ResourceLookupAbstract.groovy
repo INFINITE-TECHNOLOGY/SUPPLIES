@@ -1,6 +1,6 @@
 package io.infinite.supplies.conf
 
-import io.infinite.supplies.ast.exceptions.RuntimeException
+import io.infinite.supplies.ast.exceptions.SuppliesRuntimeException
 
 class ResourceLookupAbstract {
 
@@ -10,10 +10,10 @@ class ResourceLookupAbstract {
 
     ResourceLookupAbstract(String moduleName, String resourceName, Boolean proceedSearch) {
         if (resourceName == null || resourceName == "") {
-            throw new RuntimeException("Resource name can not be null or empty: " + resourceName == "" ? "empty" : "null")
+            throw new SuppliesRuntimeException("Resource name can not be null or empty: " + resourceName == "" ? "empty" : "null")
         }
         if (moduleName == null || moduleName == "") {
-            throw new RuntimeException("Module name can not be null or empty: " + moduleName == "" ? "empty" : "null")
+            throw new SuppliesRuntimeException("Module name can not be null or empty: " + moduleName == "" ? "empty" : "null")
         }
         this.moduleName = moduleName
         this.resourceName = resourceName

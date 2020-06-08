@@ -1,8 +1,7 @@
 package io.infinite.supplies.ast.cache
 
 import groovy.transform.CompileDynamic
-import io.infinite.supplies.ast.exceptions.CompileException
-import io.infinite.supplies.ast.other.ASTUtils
+import io.infinite.supplies.ast.exceptions.SuppliesCompileException
 import jdk.internal.org.objectweb.asm.Opcodes
 import org.codehaus.groovy.ast.*
 import org.codehaus.groovy.ast.expr.ConstantExpression
@@ -34,16 +33,16 @@ class CacheTransformation extends AbstractASTTransformation {
             if (iAstNodeArray[1] instanceof FieldNode) {
                 transformFieldNode(iAstNodeArray[1] as FieldNode)
             } else {
-                throw new CompileException(iAstNodeArray[1], "Unsupported Annotated Node; Only FieldNode is supported.")
+                throw new SuppliesCompileException(iAstNodeArray[1], "Unsupported Annotated Node; Only FieldNode is supported.")
             }
         } catch (Exception exception) {
-            throw new CompileException(iAstNodeArray[1], exception)
+            throw new SuppliesCompileException(iAstNodeArray[1], exception)
         }
     }
 
     void transformFieldNode(FieldNode fieldNode) {
         if (fieldNode.isStatic()) {
-            throw new CompileException(fieldNode, "Field must not be static.")
+            throw new SuppliesCompileException(fieldNode, "Field must not be static.")
         }
         declareStaticMapIfNeeded(fieldNode)
         setInitialValueExpression(fieldNode)

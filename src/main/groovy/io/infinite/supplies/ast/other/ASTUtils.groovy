@@ -1,7 +1,7 @@
 package io.infinite.supplies.ast.other
 
 import groovy.inspect.swingui.AstNodeToScriptVisitor
-import io.infinite.supplies.ast.exceptions.CompileException
+import io.infinite.supplies.ast.exceptions.SuppliesCompileException
 import io.infinite.supplies.ast.metadata.MetaDataExpression
 import io.infinite.supplies.ast.metadata.MetaDataMethodNode
 import io.infinite.supplies.ast.metadata.MetaDataStatement
@@ -65,7 +65,7 @@ class ASTUtils {
         } else if (memberExpression == null) {
             return defaultValue
         } else {
-            throw new CompileException(annotationNode, "Unsupported annotation \"$annotationName\" type: " + memberExpression.getClass().getCanonicalName() + " for annotation: " + annotationName)
+            throw new SuppliesCompileException(annotationNode, "Unsupported annotation \"$annotationName\" type: " + memberExpression.getClass().getCanonicalName() + " for annotation: " + annotationName)
         }
     }
 
